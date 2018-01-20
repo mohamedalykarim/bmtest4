@@ -144,7 +144,7 @@ public class QuizSessionActivity extends AppCompatActivity {
                                 .setPositiveButton("قم بانهاء الجلسة", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         Intent intent = new Intent(mContext,ResultActivity.class);
-                                        intent.putExtra("curren_session",QuestionPagerFragment.mCurrentSession);
+                                        intent.putExtra("current_session",QuestionPagerFragment.mCurrentSession);
                                         intent.putExtra("result", intResult);
                                         intent.putExtra("correct", finalCorrectAnswer);
                                         startActivity(intent);

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded5"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/recycler_main_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/icon_recycleview"
+                android:layout_toStartOf="@id/icon_recycleview"
+                android:padding="15dp">
+
+
+                <TextView
+                    android:id="@+id/tv_recyclerview_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/rounded"
+                    android:padding="10dp"
+                    android:text="TextView"
+                    android:textAlignment="textStart"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_choices"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/tv_recyclerview_title"
+                    android:layout_alignRight="@+id/tv_recyclerview_title"
+                    android:layout_below="@+id/tv_recyclerview_title"
+                    android:layout_marginTop="12dp"
+                    android:padding="10dp"
+                    android:text="choice"
+                    android:textAlignment="textStart"
+                    android:textColor="#030303"
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    android:id="@+id/tv_recyclerview_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/tv_choices"
+                    android:layout_alignRight="@+id/tv_choices"
+                    android:layout_below="@+id/tv_choices"
+                    android:layout_marginTop="11dp"
+                    android:background="@drawable/rounded5"
+                    android:padding="10dp"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    android:textColor="#135601"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
