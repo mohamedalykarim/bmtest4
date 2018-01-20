@@ -1,0 +1,412 @@
+﻿{
+	"questions":
+		{
+			"category2001": [
+				{
+					"question_id": "2001001",
+					"question_choices": [
+						{
+							"choice_id": "1001",
+							"choice_text": "قروض معلومات",
+							"is_true": "1"
+						},
+						{
+							"choice_id": "2001002",
+							"choice_text": "قروض ضمانات",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001003",
+							"choice_text": "جميع ما سبق",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001004",
+							"choice_text": "لا شئ مما سبق",
+							"is_true": "0"
+						}
+					]
+				},
+				{
+					"question_id": "2001002",
+					"question_choices": [
+						{
+							"choice_id": "2001005",
+							"choice_text": " حجم القرض الامثل للعميل",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001006",
+							"choice_text": "العميل الجيد",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001007",
+							"choice_text": "المنشأه الجيده",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001008",
+							"choice_text": "كل ماسبق",
+							"is_true": "1"
+						}
+					]
+				},
+				{
+					"question_id": "2001003",
+					"question_choices": [
+						{
+							"choice_id": "2001009",
+							"choice_text": "عميل جيد وعميل سئ",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001010",
+							"choice_text": "قرض جيد وقرض سئ",
+							"is_true": "1"
+						},
+						{
+							"choice_id": "2001011",
+							"choice_text": "كلاهما معا",
+							"is_true": "0"
+						}
+					]
+				},
+				{
+					"question_id": "2001004",
+					"question_choices": [
+						{
+							"choice_id": "2001012",
+							"choice_text": "الموقف المالى",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001013",
+							"choice_text": "سلوك العميل",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001014",
+							"choice_text": "السلوك الائتمانى",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001015",
+							"choice_text": "جميع ما سبق",
+							"is_true": "1"
+						}
+					]
+				},
+				{
+					"question_id": "2001005",
+					"question_choices": [
+						{
+							"choice_id": "2001016",
+							"choice_text": "العباره صحيحه",
+							"is_true": "1"
+						},
+						{
+							"choice_id": "2001017",
+							"choice_text": "العباره خاطئه",
+							"is_true": "0"
+						}
+					]
+				},
+				{
+					"question_id": "2001006",
+					"question_choices": [
+						{
+							"choice_id": "2001018",
+							"choice_text": "تجاريه",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001019",
+							"choice_text": "صناعيه",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001020",
+							"choice_text": "خدميه",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001021",
+							"choice_text": "جميع ما سبق",
+							"is_true": "1"
+						},
+						{
+							"choice_id": "2001022",
+							"choice_text": "1و2 فقط",
+							"is_true": "0"
+						}
+					]
+				},
+				{
+					"question_id": "2001007",
+					"question_choices": [
+						{
+							"choice_id": "2001023",
+							"choice_text": "العباره صحيحه",
+							"is_true": "1"
+						},
+						{
+							"choice_id": "2001024",
+							"choice_text": "العباره خاطئه",
+							"is_true": "0"
+						}
+					]
+				},
+				{
+					"question_id": "2001008",
+					"question_choices": [
+						{
+							"choice_id": "2001025",
+							"choice_text": "تحسين كفاءه وتكنولوجيا الانتاج",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001026",
+							"choice_text": "تمكين المشاريع المموله التى تثبت الجديه والالتزام الاستفاده من المنتجات والخدمات المصرفيه الاخرى",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001027",
+							"choice_text": "تحويل عملاء المشروعات المموله من قطاع صغار الممولين الى عملاء ائتمان بحدود اكبر",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001028",
+							"choice_text": "جميع ما سبق",
+							"is_true": "1"
+						}
+					]
+				},
+				{
+					"question_id": "2001009",
+					"question_choices": [
+						{
+							"choice_id": "2001029",
+							"choice_text": "الانتاج الحيوانى",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001030",
+							"choice_text": "الانتاج الداجنى ",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001031",
+							"choice_text": "المطاعم والكافيهات",
+							"is_true": "1"
+						},
+						{
+							"choice_id": "2001032",
+							"choice_text": "وسائل النقل",
+							"is_true": "0"
+						}
+					]
+				},
+				{
+					"question_id": "2001010",
+					"question_choices": [
+						{
+							"choice_id": "2001033",
+							"choice_text": "العباره صحيحه",
+							"is_true": "1"
+						},
+						{
+							"choice_id": "2001034",
+							"choice_text": "العباره خاطئه",
+							"is_true": "0"
+						}
+					]
+				},
+				{
+					"question_id": "2001011",
+					"question_choices": [
+						{
+							"choice_id": "2001035",
+							"choice_text": "سرعه منح القرض خلال اسبوع عمل",
+							"is_true": "1"
+						},
+						{
+							"choice_id": "2001036",
+							"choice_text": "عدم تحمل العميل باى عمولات او فؤائد",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001037",
+							"choice_text": "جميع ما سبق",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001038",
+							"choice_text": "لا شئ مما سبق",
+							"is_true": "0"
+						}
+					]
+				},
+				{
+					"question_id": "2001012",
+					"question_choices": [
+						{
+							"choice_id": "2001039",
+							"choice_text": "نشر وترويج البرنامج",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001040",
+							"choice_text": "الاختيار الجيد للعملاء ",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001041",
+							"choice_text": "تقييم العميل ونشاطه",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001042",
+							"choice_text": "جميع ما سبق",
+							"is_true": "1"
+						}
+					]
+				},
+				{
+					"question_id": "2001013",
+					"question_choices": [
+						{
+							"choice_id": "2001043",
+							"choice_text": "العباره صحيحه",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001044",
+							"choice_text": "العباره خاطئه",
+							"is_true": "1"
+						}
+					]
+				},
+				{
+					"question_id": "2001014",
+					"question_choices": [
+						{
+							"choice_id": "2001045",
+							"choice_text": "العباره صحيحه",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001046",
+							"choice_text": "العباره خاطئه",
+							"is_true": "1"
+						}
+					]
+				},
+				{
+					"question_id": "2001015",
+					"question_choices": [
+						{
+							"choice_id": "2001047",
+							"choice_text": "تحديد اماكن تجمع وتواجد الفئات المستهدفه داخل نطاق الفرع",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001048",
+							"choice_text": "شرح مزابا البرنامج لللعملاء المستهدفين ",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001049",
+							"choice_text": "تسجيل اسماء العملاء الراغبين فى الحصول على التمويل مع تحديد موعد لزيارتهم فى مقر النشاط",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001050",
+							"choice_text": "جميع ما سبق",
+							"is_true": "1"
+						},
+						{
+							"choice_id": "2001051",
+							"choice_text": "لا شئ مما سبق",
+							"is_true": "0"
+						}
+					]
+				},
+				{
+					"question_id": "2001016",
+					"question_choices": [
+						{
+							"choice_id": "2001052",
+							"choice_text": "العباره صحيحه",
+							"is_true": "1"
+						},
+						{
+							"choice_id": "2001053",
+							"choice_text": "العباره خاطئه",
+							"is_true": "0"
+						}
+					]
+				},
+				{
+					"question_id": "2001017",
+					"question_choices": [
+						{
+							"choice_id": "2001054",
+							"choice_text": "العباره صحيحه",
+							"is_true": "1"
+						},
+						{
+							"choice_id": "2001055",
+							"choice_text": "العباره خاطئه",
+							"is_true": "0"
+						}
+					]
+				},
+				{
+					"question_id": "2001018",
+					"question_choices": [
+						{
+							"choice_id": "2001056",
+							"choice_text": "العباره صحيحه",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001057",
+							"choice_text": "العباره خاطئه",
+							"is_true": "1"
+						}
+					]
+				},
+				{
+					"question_id": "2001019",
+					"question_choices": [
+						{
+							"choice_id": "2001058",
+							"choice_text": "العباره صحيحه",
+							"is_true": "0"
+						},
+						{
+							"choice_id": "2001059",
+							"choice_text": "العباره خاطئه",
+							"is_true": "1"
+						}
+					]
+				},
+				{
+					"question_id": "2001020",
+					"question_choices": [
+						{
+							"choice_id": "2001060",
+							"choice_text": "العباره صحيحه",
+							"is_true": "1"
+						},
+						{
+							"choice_id": "2001061",
+							"choice_text": "العباره خاطئه",
+							"is_true": "0"
+						}
+					]
+				}
+			]
+		}
+}

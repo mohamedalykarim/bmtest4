@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    android:layoutDirection="rtl"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded2"
+        android:layoutDirection="rtl"
+        android:padding="5dp">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="5dp"
+                    android:text="السؤال رقم"
+                    android:textColor="@color/Font_dark"
+                    android:textSize="18sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/tv_question_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/textView"
+                    android:layout_toRightOf="@id/textView"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="5dp"
+                    android:text="120"
+                    android:textColor="@color/Font_dark"
+                    android:textSize="18sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/textView"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/rounded"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_question_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"
+                        android:textColor="#ffffff"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+                <RadioGroup
+                    android:id="@+id/rg_choices"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rl_question"
+                    android:layout_marginTop="5dp"
+                    android:padding="5dp" />
+
+
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+
+</LinearLayout>
