@@ -55,10 +55,9 @@ public class DocumentationFragment extends Fragment implements MainRecyclerViewA
         mAdapter = new MainRecyclerViewAdapter(mRecyclerArraylist,this.getContext(),this);
         mRecyclerView.setAdapter(mAdapter);
 
-        mRecyclerArraylist.add(new Link("المشروعات الصغيرة والمتوسطة","هذا القسم مخصص لتعليمات المشروعات الصغيرة والمتوسطة ومنشوراتها", 0));
         mRecyclerArraylist.add(new Link("المشروعات المتناهية الصغر","هذا القسم مخصص لتعليمات المشروعات المتناهية الصغر ومنشوراتها", 0));
-        mRecyclerArraylist.add(new Link("BM VIP","هذا القسم مخصص لتعليمات كبار عملاء بنك مصر", 0));
-        mRecyclerArraylist.add(new Link("الحسابات الجارية","هذا القسم مخصص لتعليمات الحسابات الجارية ومنشوراتها ", 0));
+        mRecyclerArraylist.add(new Link("ائتمان التجزئة المصرفية والبطاقات الائتمانية","هذا القسم مخصص لتعليمات ائتمان التجزئة المصرفية والبطاقات الائتمانية ", 0));
+        mRecyclerArraylist.add(new Link("التوفير والاحوال الشخصية","هذا القسم مخصص لتعليمات التوفير والاحوال الشخصية ", 0));
         mAdapter.setLinkData(mRecyclerArraylist);
 
     }
@@ -66,11 +65,27 @@ public class DocumentationFragment extends Fragment implements MainRecyclerViewA
     @Override
     public void onListItemClick(int checkedItemIndex) {
         String category = "category";
-        // المشروعات الصغيرة والمتوسطة
+
+        // المشروعات المتناهية الصغر
         if (checkedItemIndex == 0){
             Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
             SME.putExtra(category,2001);
             startActivity(SME);
         }
+
+        // ائتمان التجزئة المصرفية والبطاقات الائتمانية
+        else if (checkedItemIndex == 1){
+            Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
+            SME.putExtra(category,2002);
+            startActivity(SME);
+        }
+
+        // التوفير والاحوال الشخصية
+        else if (checkedItemIndex == 2){
+            Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
+            SME.putExtra(category,2003);
+            startActivity(SME);
+        }
+
     }
 }

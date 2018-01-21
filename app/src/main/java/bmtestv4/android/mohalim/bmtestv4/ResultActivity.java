@@ -99,25 +99,25 @@ public class ResultActivity extends AppCompatActivity {
 
                     String choicesString = "";
                     if (choices.length == 2){
-                        choicesString = choices[0] ;
+                        choicesString = "- "+choices[0] ;
                     }else if(choices.length == 4){
-                        choicesString = choices[0] + "\n";
-                        choicesString += choices[2];
+                        choicesString = "- "+choices[0] + "\n";
+                        choicesString += "- "+choices[2];
                     }else if(choices.length == 6){
-                        choicesString = choices[0] + "\n";
-                        choicesString += choices[2]+ "\n";
-                        choicesString += choices[4];
+                        choicesString = "- "+choices[0] + "\n";
+                        choicesString += "- "+choices[2]+ "\n";
+                        choicesString += "- "+choices[4];
                     }else if(choices.length == 8){
-                        choicesString = choices[0] + "\n";
-                        choicesString += choices[2]+ "\n";
-                        choicesString += choices[4]+ "\n";
-                        choicesString += choices[6];
+                        choicesString = "- "+choices[0] + "\n";
+                        choicesString += "- "+choices[2]+ "\n";
+                        choicesString += "- "+choices[4]+ "\n";
+                        choicesString += "- "+choices[6];
                     }else if(choices.length == 10){
-                        choicesString = choices[0] + "\n";
-                        choicesString += choices[2]+ "\n";
-                        choicesString += choices[4]+ "\n";
-                        choicesString += choices[6]+ "\n";
-                        choicesString += choices[8];
+                        choicesString = "- "+choices[0] + "\n";
+                        choicesString += "- "+choices[2]+ "\n";
+                        choicesString += "- "+choices[4]+ "\n";
+                        choicesString += "- "+choices[6]+ "\n";
+                        choicesString += "- "+choices[8];
 
                     }
 
@@ -184,25 +184,25 @@ public class ResultActivity extends AppCompatActivity {
 
                         String choicesString = "";
                         if (choices.length == 2){
-                            choicesString = choices[0] ;
+                            choicesString = "- "+ choices[0] ;
                         }else if(choices.length == 4){
-                            choicesString = choices[0] + "\n";
-                            choicesString += choices[2];
+                            choicesString = "- "+choices[0] + "\n";
+                            choicesString += "- "+choices[2];
                         }else if(choices.length == 6){
-                            choicesString = choices[0] + "\n";
-                            choicesString += choices[2]+ "\n";
-                            choicesString += choices[4];
+                            choicesString = "- "+choices[0] + "\n";
+                            choicesString += "- "+choices[2]+ "\n";
+                            choicesString += "- "+choices[4];
                         }else if(choices.length == 8){
-                            choicesString = choices[0] + "\n";
-                            choicesString += choices[2]+ "\n";
-                            choicesString += choices[4]+ "\n";
-                            choicesString += choices[6];
+                            choicesString = "- "+choices[0] + "\n";
+                            choicesString += "- "+choices[2]+ "\n";
+                            choicesString += "- "+choices[4]+ "\n";
+                            choicesString += "- "+choices[6];
                         }else if(choices.length == 10){
-                            choicesString = choices[0] + "\n";
-                            choicesString += choices[2]+ "\n";
-                            choicesString += choices[4]+ "\n";
-                            choicesString += choices[6]+ "\n";
-                            choicesString += choices[8];
+                            choicesString = "- "+choices[0] + "\n";
+                            choicesString += "- "+choices[2]+ "\n";
+                            choicesString += "- "+choices[4]+ "\n";
+                            choicesString += "- "+choices[6]+ "\n";
+                            choicesString += "- "+choices[8];
 
                         }
 

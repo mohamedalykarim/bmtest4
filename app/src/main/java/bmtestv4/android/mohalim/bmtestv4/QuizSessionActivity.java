@@ -22,6 +22,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -42,8 +43,10 @@ public class QuizSessionActivity extends AppCompatActivity {
     List<MenuItem> menuItems;
 
 
+    int sessionCategory, questionCount;
+
     // database variables
-    SessionSQLiteHelper database;
+    static SessionSQLiteHelper database;
     Sessions sessions;
     ArrayList<CurrentSession> currentSessionArrayList;
 
@@ -51,11 +54,14 @@ public class QuizSessionActivity extends AppCompatActivity {
     MyPagerAdabter mQuestionAdapter;
     public static ViewPager mQuestionViewPager;
 
-    // Choices
-    public static RadioGroup mRadioGroubChoices;
 
     // End the Session
     Button mEndSessionBtn;
+
+
+    // Loading
+    boolean shouldAllowBack = false;
+
 
 
 
@@ -82,10 +88,27 @@ public class QuizSessionActivity extends AppCompatActivity {
         mNavigationView.setItemIconTintList(null);
         mNavigationView.setItemBackgroundResource(R.drawable.rounded5);
         menuItems=new ArrayList<>();
-        doCategory(2001,20);
+
+
+        sessionCategory = getIntent().getIntExtra("category",0);
+        if (sessionCategory < 1){
+            sessionCategory = 2001;
+        }
+        questionCount = 10;
+
+        // المشروعات المتناهية الصغر
+        if (sessionCategory == 2001) questionCount = 50;
+        // ائتمان التجزئة المصرفية والبطاقات الائتمانية
+        if (sessionCategory == 2002) questionCount = 40;
+        // التوفير والاحوال الشخصية
+        if (sessionCategory == 2003) questionCount = 49;
+
+
+
 
         //End the session
         mEndSessionBtn = (Button)findViewById(R.id.btn_end_session);
+        mEndSessionBtn.setClickable(false);
         mEndSessionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -143,6 +166,8 @@ public class QuizSessionActivity extends AppCompatActivity {
                         builder.setMessage("هل انت متأكد من انهاء الجلسة ؟ ")
                                 .setPositiveButton("قم بانهاء الجلسة", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
+                                        database.deleteQuestionsFromSession(sessionCategory);
+                                        database.updateIsSession(sessionCategory,0);
                                         Intent intent = new Intent(mContext,ResultActivity.class);
                                         intent.putExtra("current_session",QuestionPagerFragment.mCurrentSession);
                                         intent.putExtra("result", intResult);
@@ -164,6 +189,9 @@ public class QuizSessionActivity extends AppCompatActivity {
             }
         });
 
+        doCategory(sessionCategory,questionCount);
+
+
     }
 
     public void doCategory(int _category, int _questionCount){
@@ -183,19 +211,29 @@ public class QuizSessionActivity extends AppCompatActivity {
                 if (database.isQuestionsForSession(database.getSessionIdFromCategory(_category))){
                     database.deleteQuestionsFromSession(_category);
                 }
+                database.updateIsSession(_category,1);
+                createQuestions(_category, _questionCount);
+                CompleteSessionParams completeSessionParams = new CompleteSessionParams(_category,_questionCount);
+                new CompleteSessionAsyncTask().execute(completeSessionParams);
 
-                Toast.makeText(this, "Category has Closed Session", Toast.LENGTH_SHORT).show();
+
             }
         }else{
             //category has no session
             if (database.isQuestionsForSession(database.getSessionIdFromCategory(_category))){
                 // There are questions for the category
-                Toast.makeText(this, "There are questions for the category", Toast.LENGTH_SHORT).show();
-            }else{
-                //There are no questions for the category
-                Toast.makeText(this, "There are no questions for the category", Toast.LENGTH_SHORT).show();
+                database.deleteQuestionsFromSession(_category);
                 createSession(_category);
                 createQuestions(_category, _questionCount);
+                CompleteSessionParams completeSessionParams = new CompleteSessionParams(_category,_questionCount);
+                new CompleteSessionAsyncTask().execute(completeSessionParams);
+
+            }else{
+                //There are no questions for the category
+                createSession(_category);
+                createQuestions(_category, _questionCount);
+                CompleteSessionParams completeSessionParams = new CompleteSessionParams(_category,_questionCount);
+                new CompleteSessionAsyncTask().execute(completeSessionParams);
             }
         }
     }
@@ -209,14 +247,21 @@ public class QuizSessionActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        currentSessionArrayList.clear();
+
+        if (!shouldAllowBack) {
+            return;
+        } else {
+            super.onBackPressed();
+            currentSessionArrayList.clear();
+        }
+
     }
 
     void resumeSession(int _category){
     }
 
     public void completeTheSession(int _category, int _questionCount){
+
         final ArrayList<String> questions_id = new ArrayList<>();
         questions_id.addAll(database.getQuestionsFromSession(_category));
 
@@ -293,6 +338,20 @@ public class QuizSessionActivity extends AppCompatActivity {
 
                 mQuestionAdapter = new MyPagerAdabter(fm,currentSessionArrayList);
                 mQuestionViewPager.setAdapter(mQuestionAdapter);
+                mQuestionViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                    @Override
+                    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                    }
+
+                    @Override
+                    public void onPageSelected(int position) {
+                    }
+
+                    @Override
+                    public void onPageScrollStateChanged(int state) {
+                    }
+                });
 
 
 
@@ -337,10 +396,10 @@ public class QuizSessionActivity extends AppCompatActivity {
         String json = sessions.readQuestionJSONFromAssets(this);
         int[] questions = sessions.getRandomQuestionFromCategory(_category,json,_questionCount);
         int[] limitedQuestions = new int[_questionCount];
+
         for (int i=0; i<limitedQuestions.length; i++){
             limitedQuestions[i] = questions[i];
         }
-        Collections.shuffle(Arrays.asList(limitedQuestions));
         sessions.setQuestionSessionForSpecificCategory(_category,limitedQuestions);
     }
 
@@ -447,7 +506,8 @@ public class QuizSessionActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-
+            shouldAllowBack = true;
+            mEndSessionBtn.setClickable(true);
         }
     }
 
@@ -494,7 +554,6 @@ public class QuizSessionActivity extends AppCompatActivity {
             return mCurrentSession.size();
         }
     }
-
 
 
 

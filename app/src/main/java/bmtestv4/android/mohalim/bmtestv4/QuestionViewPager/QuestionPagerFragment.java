@@ -169,24 +169,4 @@ public class QuestionPagerFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        if (isVisibleToUser){
-            new AsyncTask<Void, Void, Void>(){
-
-                @Override
-                protected Void doInBackground(Void... voids) {
-
-                    return null;
-                }
-            }.execute();
-        }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-    }
-
 }
