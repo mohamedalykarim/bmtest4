@@ -1,6 +1,7 @@
 package bmtestv4.android.mohalim.bmtestv4.Adapters;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,12 +26,12 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
     Context mCtx;
     final private ListItemClickListener mListItemClickListener;
 
-    public interface ListItemClickListener{
+    public interface ListItemClickListener {
         void onListItemClick(int checkedItemIndex);
     }
 
 
-    public MainRecyclerViewAdapter(ArrayList<Link> arrayList, Context context, ListItemClickListener listener){
+    public MainRecyclerViewAdapter(ArrayList<Link> arrayList, Context context, ListItemClickListener listener) {
         mLinkData = new ArrayList<>();
         mLinkData.addAll(arrayList);
         mCtx = context;
@@ -56,7 +57,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
         holder.title.setText(link.get_title());
         holder.description.setText(link.get_description());
 
-        if (link.get_resource() != 0){
+        if (link.get_resource() != 0) {
             Picasso.with(mCtx)
                     .load(link.get_resource())
                     .into(holder.iconView);
@@ -65,13 +66,13 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
 
     @Override
     public int getItemCount() {
-        if(null == mLinkData) return 0;
+        if (null == mLinkData) return 0;
         return mLinkData.size();
     }
 
-    class MainAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class MainAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView title,description;
+        TextView title, description;
         ImageView iconView;
 
         public MainAdapterViewHolder(View itemView) {
@@ -94,5 +95,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
         mLinkData = linkData;
         notifyDataSetChanged();
     }
+
+
 
 }

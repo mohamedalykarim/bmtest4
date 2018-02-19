@@ -97,11 +97,51 @@ public class QuizSessionActivity extends AppCompatActivity {
         questionCount = 10;
 
         // المشروعات المتناهية الصغر
-        if (sessionCategory == 2001) questionCount = 50;
+        if (sessionCategory == 2001) questionCount = 178;
         // ائتمان التجزئة المصرفية والبطاقات الائتمانية
         if (sessionCategory == 2002) questionCount = 40;
         // التوفير والاحوال الشخصية
         if (sessionCategory == 2003) questionCount = 49;
+        // القروض الشخصية والتمويل العقاري
+        if (sessionCategory == 2004) questionCount = 26;
+        // الحسابات العامة
+        if (sessionCategory == 2010) questionCount = 45;
+        // الخزينة والتللر
+        if (sessionCategory == 2011) questionCount = 67;
+        // الحسابات الجارية والشيكات
+        if (sessionCategory == 2012) questionCount = 125;
+        // المشروعات الصغيرة والمتوسطة
+        if (sessionCategory == 2020) questionCount = 42;
+        // التأمين البنكي
+        if (sessionCategory == 2013) questionCount = 25;
+        // التحاويل الداخلية
+        if (sessionCategory == 2014) questionCount = 31;
+        // الاوراق التجارية
+        if (sessionCategory == 2015) questionCount = 23;
+        // الالتزام المصرفي
+        if (sessionCategory == 2016) questionCount = 29;
+
+
+        // فريق العمل
+        if (sessionCategory == 3001) questionCount = 76;
+        // التواصل الفعال
+        if (sessionCategory == 3002) questionCount = 88;
+        // خدمة العملاء
+        if (sessionCategory == 3003) questionCount = 67;
+        // ادارة الوقت
+        if (sessionCategory == 3004) questionCount = 50;
+        // حل المشكلات
+        if (sessionCategory == 3005) questionCount = 67;
+
+
+        // مخاطر التشغيل
+        if (sessionCategory == 3201) questionCount = 63;
+        // الميثاق
+        if (sessionCategory == 3202) questionCount = 40;
+
+        // مصرفي ممتاز
+        if (sessionCategory == 1001) questionCount = 30;
+
 
 
 
@@ -262,6 +302,8 @@ public class QuizSessionActivity extends AppCompatActivity {
 
     public void completeTheSession(int _category, int _questionCount){
 
+
+
         final ArrayList<String> questions_id = new ArrayList<>();
         questions_id.addAll(database.getQuestionsFromSession(_category));
 
@@ -270,7 +312,12 @@ public class QuizSessionActivity extends AppCompatActivity {
 
 
 
+
         for (int i=0; i<questions_id.size(); i++){
+
+            if (_category == 1001)
+                _category = sessions.getQuestionCategory(Integer.parseInt(questions_id.get(i)));
+
             int chosenAnswer = database.getChosenAnswer(Integer.valueOf(questions_id.get(i)),sessionId);
 
             final String question_text = sessions.getQuestionTextForId(
@@ -394,7 +441,17 @@ public class QuizSessionActivity extends AppCompatActivity {
 
     public void createQuestions(int _category, int _questionCount){
         String json = sessions.readQuestionJSONFromAssets(this);
-        int[] questions = sessions.getRandomQuestionFromCategory(_category,json,_questionCount);
+        int[] questions;
+
+        if (sessionCategory == 1001){
+            _category = 1001;
+            questions = sessions.getRandomForLvl1(json);
+            _questionCount = 30;
+        }else
+        {
+            questions = sessions.getRandomQuestionFromCategory(_category,json,_questionCount);
+        }
+
         int[] limitedQuestions = new int[_questionCount];
 
         for (int i=0; i<limitedQuestions.length; i++){

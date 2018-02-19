@@ -58,6 +58,16 @@ public class DocumentationFragment extends Fragment implements MainRecyclerViewA
         mRecyclerArraylist.add(new Link("المشروعات المتناهية الصغر","هذا القسم مخصص لتعليمات المشروعات المتناهية الصغر ومنشوراتها", 0));
         mRecyclerArraylist.add(new Link("ائتمان التجزئة المصرفية والبطاقات الائتمانية","هذا القسم مخصص لتعليمات ائتمان التجزئة المصرفية والبطاقات الائتمانية ", 0));
         mRecyclerArraylist.add(new Link("التوفير والاحوال الشخصية","هذا القسم مخصص لتعليمات التوفير والاحوال الشخصية ", 0));
+        mRecyclerArraylist.add(new Link("القروض الشخصية والتمويل العقاري","هذا القسم مخصص لتعليمات القروض الشخصية والتمويل العقاري ", 0));
+        mRecyclerArraylist.add(new Link("الحسابات العامة","هذا القسم مخصص لتعليمات الحسابات العامة ", 0));
+        mRecyclerArraylist.add(new Link("الخزينة والتللر","هذا القسم مخصص لتعليمات الخزينة والتللر ", 0));
+        mRecyclerArraylist.add(new Link("الحسابات الجارية والشيكات","هذا القسم مخصص لتعليمات الحسابات الجارية والشيكات ", 0));
+        mRecyclerArraylist.add(new Link("المشروعات الصغيرة والمتوسطة","هذا القسم مخصص لتعليمات المشروعات الصغيرة والمتوسطة ", 0));
+        mRecyclerArraylist.add(new Link("التأمين البنكي","هذا القسم مخصص لتعليمات التأمين البنكي ", 0));
+        mRecyclerArraylist.add(new Link("التحاويل الداخلية","هذا القسم مخصص لتعليمات التحاويل الداخلية ", 0));
+        mRecyclerArraylist.add(new Link("الاوراق التجارية","هذا القسم مخصص لتعليمات الاوراق التجارية ", 0));
+        mRecyclerArraylist.add(new Link("الالتزام المصرفي","هذا القسم مخصص لتعليمات الالتزام المصرفي ", 0));
+
         mAdapter.setLinkData(mRecyclerArraylist);
 
     }
@@ -87,5 +97,65 @@ public class DocumentationFragment extends Fragment implements MainRecyclerViewA
             startActivity(SME);
         }
 
+        //القروض الشخصية والتمويل العقاري
+        else if (checkedItemIndex == 3){
+            Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
+            SME.putExtra(category,2004);
+            startActivity(SME);
+        }
+
+        // الحسابات العامة
+        else if (checkedItemIndex == 4){
+            Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
+            SME.putExtra(category,2010);
+            startActivity(SME);
+        }
+        // الحسابات العامة
+        else if (checkedItemIndex == 5){
+            Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
+            SME.putExtra(category,2011);
+            startActivity(SME);
+        }
+        // الحسابات الجارية والشيكات
+        else if (checkedItemIndex == 6){
+            Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
+            SME.putExtra(category,2012);
+            startActivity(SME);
+        }
+
+        // المشروعات الصغيرة والمتوسطة
+        else if (checkedItemIndex == 7){
+            Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
+            SME.putExtra(category,2020);
+            startActivity(SME);
+        }
+
+        // التأمين البنكي
+        else if (checkedItemIndex == 8){
+            Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
+            SME.putExtra(category,2013);
+            startActivity(SME);
+        }
+
+        // التحاويل الداخلية
+        else if (checkedItemIndex == 9){
+            Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
+            SME.putExtra(category,2014);
+            startActivity(SME);
+        }
+
+        // الاوراق التجارية
+        else if (checkedItemIndex == 10){
+            Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
+            SME.putExtra(category,2015);
+            startActivity(SME);
+        }
+
+        // الالتزام المصرفي
+        else if (checkedItemIndex == 11){
+            Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
+            SME.putExtra(category,2016);
+            startActivity(SME);
+        }
     }
 }

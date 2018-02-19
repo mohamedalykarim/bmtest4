@@ -99,6 +99,7 @@
                             android:background="#dadada"
                             android:padding="10dp"
                             android:text="الشروط والمواصفات الخاصة ببرامج القروض النقدية بدون ضمانات عينية "
+                            android:id="@+id/unsecureMoney"
                             android:textAlignment="center" />
                     </RelativeLayout>
 
@@ -113,6 +114,7 @@
                             android:background="#dadada"
                             android:padding="10dp"
                             android:text="الشروط والمواصفات الخاصة ببرامج القرض النقدي / التسهيلات بضمانات عينية "
+                            android:id="@+id/secureMoney"
                             android:textAlignment="center" />
                     </RelativeLayout>
 

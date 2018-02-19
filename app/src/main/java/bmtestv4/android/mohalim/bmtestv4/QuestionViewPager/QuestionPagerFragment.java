@@ -1,10 +1,12 @@
 package bmtestv4.android.mohalim.bmtestv4.QuestionViewPager;
 
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -115,6 +117,11 @@ public class QuestionPagerFragment extends Fragment {
                 rb[i].setText(mCurrentSession.get(pageNumber).getChoices()[i]);
             }else {
                 rb[i].setText(mCurrentSession.get(pageNumber).getChoices()[i*2]);
+            }
+
+            //rb[i].setGravity(Gravity.RIGHT);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                rb[i].setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
             }
 
             rb[i].setId(i);

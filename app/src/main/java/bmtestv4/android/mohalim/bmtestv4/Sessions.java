@@ -1,6 +1,7 @@
 package bmtestv4.android.mohalim.bmtestv4;
 
 import android.content.Context;
+import android.support.v4.content.res.TypedArrayUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,6 +46,10 @@ public class Sessions {
         }
 
         return false;
+    }
+
+    public int getQuestionCategory(int questionId){
+        return Integer.parseInt(Integer.toString(questionId).substring(0, 4));
     }
 
     public String getQuestionTextForId(int questionId, String json, int category){
@@ -209,7 +214,37 @@ public class Sessions {
     }
 
 
+    public int[] getRandomForLvl1(String json){
 
+        //
+        int[] skill1 = getRandomQuestionFromCategory(3001,json,10);
+        int[] skill2 = getRandomQuestionFromCategory(3002,json,10);
+
+        int[] methaq = getRandomQuestionFromCategory(3202,json,5);
+        int[] makhater = getRandomQuestionFromCategory(3202,json,5);
+
+        int[] all = new int[30];
+
+        for (int i = 0; i <all.length; i++){
+            if (i < 10){
+                all[i] = skill1[i];
+            }
+
+            if (i > 9 && i < 20){
+                all[i] = skill2[i-10];
+            }
+
+            if (i > 19 && i < 25){
+                all[i] = methaq[i-20];
+            }
+
+            if (i > 24 && i < 30){
+                all[i] = methaq[i-25];
+            }
+        }
+
+        return all;
+    }
 
 
 

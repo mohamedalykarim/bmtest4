@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
@@ -20,6 +22,9 @@ public class ProductFragments extends Fragment implements View.OnClickListener{
 
     LinearLayout linearLayoutMoney, linearLayoutCar,
                     linearLayoutSla, linearLayoutCards, linearLayoutBuild;
+
+
+    TextView unsecureMoney, secureMoney;
 
     public ProductFragments() {
         // Required empty public constructor
@@ -45,6 +50,10 @@ public class ProductFragments extends Fragment implements View.OnClickListener{
         linearLayoutMoney = (LinearLayout) view.findViewById(R.id.money_expand_button);
         linearLayoutCar = (LinearLayout) view.findViewById(R.id.car_expand_button);
 
+
+        unsecureMoney = (TextView) view.findViewById(R.id.unsecureMoney);
+        secureMoney = (TextView) view.findViewById(R.id.secureMoney);
+
         expandableLayoutMoney.setDuration(200);
         expandableLayoutCar.setDuration(200);
 
@@ -54,6 +63,23 @@ public class ProductFragments extends Fragment implements View.OnClickListener{
 
         linearLayoutMoney.setOnClickListener(this);
         linearLayoutCar.setOnClickListener(this);
+
+
+        // القروض النقدية بدون ضمانات عينية
+        unsecureMoney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Toast", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // القروض النقدية بضمانات عينية
+        secureMoney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Toast", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }
@@ -70,14 +96,8 @@ public class ProductFragments extends Fragment implements View.OnClickListener{
             }
         }
         else if (view.equals(linearLayoutCar)){
-            if (expandableLayoutCar.isExpanded()){
-                expandableLayoutCar.collapse();
-            }
-            else{
-                expandableLayoutCar.expand();
-            }
+            Toast.makeText(getContext(), "Toast", Toast.LENGTH_SHORT).show();
         }
-
-
     }
+
 }
