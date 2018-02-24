@@ -9,15 +9,22 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.AsyncTaskLoader;
+import android.support.v4.content.Loader;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,6 +49,8 @@ public class QuizSessionActivity extends AppCompatActivity {
     public static NavigationView mNavigationView;
     List<MenuItem> menuItems;
 
+    private static final int lOADER_ID = 654;
+
 
     int sessionCategory, questionCount;
 
@@ -62,6 +71,8 @@ public class QuizSessionActivity extends AppCompatActivity {
     // Loading
     boolean shouldAllowBack = false;
 
+
+    private static final String ARRAYLIST_CALLBACKS_TEXT_JEY = "callbacks";
 
 
 
@@ -101,7 +112,7 @@ public class QuizSessionActivity extends AppCompatActivity {
         // ائتمان التجزئة المصرفية والبطاقات الائتمانية
         if (sessionCategory == 2002) questionCount = 40;
         // التوفير والاحوال الشخصية
-        if (sessionCategory == 2003) questionCount = 49;
+        if (sessionCategory == 2003) questionCount = 46;
         // القروض الشخصية والتمويل العقاري
         if (sessionCategory == 2004) questionCount = 26;
         // الحسابات العامة
@@ -110,8 +121,6 @@ public class QuizSessionActivity extends AppCompatActivity {
         if (sessionCategory == 2011) questionCount = 67;
         // الحسابات الجارية والشيكات
         if (sessionCategory == 2012) questionCount = 125;
-        // المشروعات الصغيرة والمتوسطة
-        if (sessionCategory == 2020) questionCount = 42;
         // التأمين البنكي
         if (sessionCategory == 2013) questionCount = 25;
         // التحاويل الداخلية
@@ -120,6 +129,27 @@ public class QuizSessionActivity extends AppCompatActivity {
         if (sessionCategory == 2015) questionCount = 23;
         // الالتزام المصرفي
         if (sessionCategory == 2016) questionCount = 29;
+        // شهادات الادخار
+        if (sessionCategory == 2017) questionCount = 93;
+        // خطابات الضمان
+        if (sessionCategory == 2018) questionCount = 86;
+        // BM VIP
+        if (sessionCategory == 2019) questionCount = 30;
+        // المشروعات الصغيرة والمتوسطة
+        if (sessionCategory == 2020) questionCount = 42;
+        // البطاقات
+        if (sessionCategory == 2021) questionCount = 47;
+        // خزن الامانات
+        if (sessionCategory == 2022) questionCount = 38;
+        // الات البنك الشخصي
+        if (sessionCategory == 2023) questionCount = 46;
+        // النواحى النظريه للاعتمادات المستنديه استيراد - تصدير
+        if (sessionCategory == 2024) questionCount = 22;
+        // الاعتمادات المستندية استيراد
+        if (sessionCategory == 2025) questionCount = 20;
+
+
+
 
 
         // فريق العمل
@@ -132,6 +162,8 @@ public class QuizSessionActivity extends AppCompatActivity {
         if (sessionCategory == 3004) questionCount = 50;
         // حل المشكلات
         if (sessionCategory == 3005) questionCount = 67;
+        // المهارات الاشرافية
+        if (sessionCategory == 3005) questionCount = 32;
 
 
         // مخاطر التشغيل
@@ -139,11 +171,31 @@ public class QuizSessionActivity extends AppCompatActivity {
         // الميثاق
         if (sessionCategory == 3202) questionCount = 40;
 
+        // القروض النقدية بدون ضمان عيني
+        if (sessionCategory == 4001) questionCount = 53;
+        // القروض النقدية بضمان عيني
+        if (sessionCategory == 4002) questionCount = 25;
+        // القروض النقدية بضمان عيني
+        if (sessionCategory == 4004) questionCount = 35;
+        // التمويل العقاري للافراد
+        if (sessionCategory == 2525) questionCount = 23;
+        // التمويل العقاري تشطيل
+        if (sessionCategory == 2527) questionCount = 13;
+        // التمويل العقاري بنك مركزي
+        if (sessionCategory == 2526) questionCount = 27;
+
         // مصرفي ممتاز
         if (sessionCategory == 1001) questionCount = 30;
 
 
 
+        if (savedInstanceState != null)
+        {
+            if (savedInstanceState.containsKey(ARRAYLIST_CALLBACKS_TEXT_JEY)){
+               currentSessionArrayList = savedInstanceState.getParcelableArrayList(ARRAYLIST_CALLBACKS_TEXT_JEY);
+            }
+
+        }
 
 
         //End the session
@@ -246,6 +298,9 @@ public class QuizSessionActivity extends AppCompatActivity {
                 CompleteSessionParams completeSessionParams = new CompleteSessionParams(_category,_questionCount);
                 new CompleteSessionAsyncTask().execute(completeSessionParams);
 
+
+
+
             }else{
                 // Category has Closed Session
                 if (database.isQuestionsForSession(database.getSessionIdFromCategory(_category))){
@@ -266,6 +321,7 @@ public class QuizSessionActivity extends AppCompatActivity {
                 createSession(_category);
                 createQuestions(_category, _questionCount);
                 CompleteSessionParams completeSessionParams = new CompleteSessionParams(_category,_questionCount);
+
                 new CompleteSessionAsyncTask().execute(completeSessionParams);
 
             }else{
@@ -273,16 +329,24 @@ public class QuizSessionActivity extends AppCompatActivity {
                 createSession(_category);
                 createQuestions(_category, _questionCount);
                 CompleteSessionParams completeSessionParams = new CompleteSessionParams(_category,_questionCount);
+
                 new CompleteSessionAsyncTask().execute(completeSessionParams);
+
             }
         }
     }
 
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(ARRAYLIST_CALLBACKS_TEXT_JEY,currentSessionArrayList);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
-        currentSessionArrayList.clear();
+
     }
 
     @Override
@@ -297,12 +361,10 @@ public class QuizSessionActivity extends AppCompatActivity {
 
     }
 
-    void resumeSession(int _category){
-    }
 
     public void completeTheSession(int _category, int _questionCount){
 
-
+        int defaultCategory = _category;
 
         final ArrayList<String> questions_id = new ArrayList<>();
         questions_id.addAll(database.getQuestionsFromSession(_category));
@@ -311,12 +373,15 @@ public class QuizSessionActivity extends AppCompatActivity {
         int sessionId = database.getIsSession(_category)[0];
 
 
-
-
         for (int i=0; i<questions_id.size(); i++){
 
-            if (_category == 1001)
-                _category = sessions.getQuestionCategory(Integer.parseInt(questions_id.get(i)));
+            String qId = questions_id.get(i);
+
+
+            if (_category == 1001 || _category == 1002 || _category == 1003 || _category == 1004 || _category == 1005 || _category == 1006) {
+                _category = Integer.parseInt(qId.substring(0, 4));
+            }
+
 
             int chosenAnswer = database.getChosenAnswer(Integer.valueOf(questions_id.get(i)),sessionId);
 
@@ -358,7 +423,7 @@ public class QuizSessionActivity extends AppCompatActivity {
                         correctAnswer);
             }
 
-
+            _category = defaultCategory;
         }
 
 
@@ -447,7 +512,40 @@ public class QuizSessionActivity extends AppCompatActivity {
             _category = 1001;
             questions = sessions.getRandomForLvl1(json);
             _questionCount = 30;
-        }else
+        }
+        else if (sessionCategory == 1002){
+            _category = 1002;
+            questions = sessions.getRandomForLvl1(json);
+            _questionCount = 30;
+        }
+
+        else if (sessionCategory == 1003){
+            _category = 1003;
+            questions = sessions.getRandomForLvl1(json);
+            _questionCount = 30;
+        }
+
+        else if (sessionCategory == 1004){
+            _category = 1004;
+            questions = sessions.getRandomForLvl1(json);
+            _questionCount = 30;
+        }
+
+
+        else if (sessionCategory == 1005){
+            _category = 1005;
+            questions = sessions.getRandomForLvl1(json);
+            _questionCount = 30;
+        }
+
+
+        else if (sessionCategory == 1006){
+            _category = 1006;
+            questions = sessions.getRandomForLvl1(json);
+            _questionCount = 30;
+        }
+
+        else
         {
             questions = sessions.getRandomQuestionFromCategory(_category,json,_questionCount);
         }
@@ -547,6 +645,8 @@ public class QuizSessionActivity extends AppCompatActivity {
         }
     }
 
+
+
     class CompleteSessionAsyncTask extends AsyncTask<CompleteSessionParams,Void,Void> {
 
         @Override
@@ -568,13 +668,15 @@ public class QuizSessionActivity extends AppCompatActivity {
         }
     }
 
-    class CompleteSessionParams{
+    class CompleteSessionParams  {
         int _category,_questionCount;
 
         public CompleteSessionParams(int _category, int _questionCount) {
             this._category = _category;
             this._questionCount = _questionCount;
         }
+
+
 
         public int get_category() {
             return _category;
@@ -591,6 +693,8 @@ public class QuizSessionActivity extends AppCompatActivity {
         public void set_questionCount(int _questionCount) {
             this._questionCount = _questionCount;
         }
+
+
     }
 
     public static class MyPagerAdabter extends FragmentPagerAdapter{
@@ -611,6 +715,7 @@ public class QuizSessionActivity extends AppCompatActivity {
             return mCurrentSession.size();
         }
     }
+
 
 
 

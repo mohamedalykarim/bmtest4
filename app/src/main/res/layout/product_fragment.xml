@@ -20,6 +20,7 @@
                 android:id="@+id/money_expand_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/rounded7"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -34,6 +35,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
                         android:contentDescription="بنك مصر"
+                        android:padding="10dp"
                         android:src="@drawable/product_money_icon" />
 
                     <RelativeLayout
@@ -93,14 +95,15 @@
                         android:layout_height="match_parent">
 
                         <TextView
+                            android:id="@+id/unsecureMoney"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:background="#dadada"
+                            android:background="@drawable/rounded4"
                             android:padding="10dp"
                             android:text="الشروط والمواصفات الخاصة ببرامج القروض النقدية بدون ضمانات عينية "
-                            android:id="@+id/unsecureMoney"
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
+                            android:textColor="#dadada" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -108,14 +111,15 @@
                         android:layout_height="match_parent">
 
                         <TextView
+                            android:id="@+id/secureMoney"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:background="#dadada"
+                            android:background="@drawable/rounded4"
                             android:padding="10dp"
                             android:text="الشروط والمواصفات الخاصة ببرامج القرض النقدي / التسهيلات بضمانات عينية "
-                            android:id="@+id/secureMoney"
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
+                            android:textColor="#dadada" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -133,6 +137,7 @@
                 android:id="@+id/car_expand_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/rounded7"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -147,6 +152,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
                         android:contentDescription="بنك مصر"
+                        android:padding="10dp"
                         android:src="@drawable/product_car_icon" />
 
                     <RelativeLayout
@@ -196,17 +202,198 @@
                 app:el_expanded="true"
                 app:el_parallax="0.5">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@id/tv_recyclerview_title"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="5dp"
-                    android:text="هذا القسم مخصص لمنتج القروض النقدية بجميع انواعها."
-                    android:textSize="36sp" />
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="#dadada" />
+
+            <LinearLayout
+                android:id="@+id/goods_expand_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded7"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/recycler_main_body4"
+                    android:layout_width="match_parent"
+                    android:layout_height="118dp">
+
+                    <ImageView
+                        android:id="@+id/icon_recycleview4"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:contentDescription="بنك مصر"
+                        android:padding="10dp"
+                        android:src="@drawable/product_goods_icon" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toLeftOf="@id/icon_recycleview4"
+                        android:layout_toStartOf="@id/icon_recycleview4">
+
+
+                        <TextView
+                            android:id="@+id/tv_recyclerview_title4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="20dp"
+                            android:text="قروض السلع المعمرة"
+                            android:textColor="#59051d"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/tv_recyclerview_description4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@id/tv_recyclerview_title4"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginTop="5dp"
+                            android:text="هذا القسم مخصص لمنتج قروض السلع المعمرة."
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mortgage_expand_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded7"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/recycler_main_body3"
+                    android:layout_width="match_parent"
+                    android:layout_height="118dp">
+
+                    <ImageView
+                        android:id="@+id/icon_recycleview3"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:contentDescription="بنك مصر"
+                        android:padding="10dp"
+                        android:src="@drawable/product_mortgage_icon" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toLeftOf="@id/icon_recycleview3"
+                        android:layout_toStartOf="@id/icon_recycleview3">
+
+
+                        <TextView
+                            android:id="@+id/tv_recyclerview_title3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="20dp"
+                            android:text="قروض التمويل العقاري"
+                            android:textColor="#59051d"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/tv_recyclerview_description3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@id/tv_recyclerview_title3"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginTop="5dp"
+                            android:text="هذا القسم مخصص لمنتج قروض التمويل العقاري للافراد والتشطيب ومبادرة البنك المركزي لمحدودي ومتوسطي الدخل."
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandable_layout_mortgage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#fafafa"
+                app:el_duration="1000"
+                app:el_expanded="true"
+                app:el_parallax="0.5">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/mortgage1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/rounded4"
+                            android:padding="10dp"
+                            android:text="قروض التمويل العقاري للافراد"
+                            android:textAlignment="center"
+                            android:textColor="#dadada" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/mortgage2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/rounded4"
+                            android:padding="10dp"
+                            android:text="قروض التمويل العقاري بغرض تمويل تشطيب او تحسين الوحدات السكنية"
+                            android:textAlignment="center"
+                            android:textColor="#dadada" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/mortgage3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/rounded4"
+                            android:padding="10dp"
+                            android:text="قروض التمويل العقاري مبادرة البنك المركزي"
+                            android:textAlignment="center"
+                            android:textColor="#dadada" />
+                    </RelativeLayout>
+
+                </LinearLayout>
 
             </net.cachapa.expandablelayout.ExpandableLayout>
 

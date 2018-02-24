@@ -100,5 +100,11 @@ public class SkillsFragment extends Fragment implements MainRecyclerViewAdapter.
             intent.putExtra(category,3005);
             startActivity(intent);
         }
+        // المهارات الاشرافية
+        else if (checkedItemIndex == 5){
+            Intent intent = new Intent(this.getActivity(), QuizSessionActivity.class);
+            intent.putExtra(category,4006);
+            startActivity(intent);
+        }
     }
 }

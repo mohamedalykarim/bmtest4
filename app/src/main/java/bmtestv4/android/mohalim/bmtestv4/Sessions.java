@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 
 import bmtestv4.android.mohalim.bmtestv4.Database.SessionSQLiteHelper;
@@ -48,8 +49,8 @@ public class Sessions {
         return false;
     }
 
-    public int getQuestionCategory(int questionId){
-        return Integer.parseInt(Integer.toString(questionId).substring(0, 4));
+    public int getQuestionCategory(String questionId){
+        return Integer.parseInt(questionId.substring(0, 4));
     }
 
     public String getQuestionTextForId(int questionId, String json, int category){
@@ -221,7 +222,7 @@ public class Sessions {
         int[] skill2 = getRandomQuestionFromCategory(3002,json,10);
 
         int[] methaq = getRandomQuestionFromCategory(3202,json,5);
-        int[] makhater = getRandomQuestionFromCategory(3202,json,5);
+        int[] makhater = getRandomQuestionFromCategory(3201,json,5);
 
         int[] all = new int[30];
 
@@ -239,11 +240,25 @@ public class Sessions {
             }
 
             if (i > 24 && i < 30){
-                all[i] = methaq[i-25];
+                all[i] = makhater[i-25];
             }
         }
 
-        return all;
+        ArrayList<Integer> arrayList = new ArrayList<>();
+
+        for (int i = 0; i < all.length; i++){
+            arrayList.add(all[i]);
+        }
+        Collections.shuffle(arrayList);
+
+        int[] allShuffled = new int[arrayList.size()];
+
+        for (int i = 0; i<arrayList.size(); i++){
+            allShuffled[i] = arrayList.get(i);
+        }
+
+
+        return allShuffled;
     }
 
 

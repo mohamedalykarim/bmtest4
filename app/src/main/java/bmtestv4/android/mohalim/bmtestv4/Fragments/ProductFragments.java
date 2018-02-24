@@ -1,6 +1,7 @@
 package bmtestv4.android.mohalim.bmtestv4.Fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,18 +14,21 @@ import android.widget.Toast;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
+import bmtestv4.android.mohalim.bmtestv4.QuizSessionActivity;
 import bmtestv4.android.mohalim.bmtestv4.R;
 
 
 public class ProductFragments extends Fragment implements View.OnClickListener{
+    String category;
     ExpandableLayout expandableLayoutMoney, expandableLayoutCar,
-            expandableLayoutSla, expandableLayoutCards, expandableLayoutBuild ;
+            expandableLayoutMortgage ;
 
-    LinearLayout linearLayoutMoney, linearLayoutCar,
-                    linearLayoutSla, linearLayoutCards, linearLayoutBuild;
+    LinearLayout linearLayoutMoney, linearLayoutCar, linearLayoutMortgage, linearLayoutGoods;
 
 
-    TextView unsecureMoney, secureMoney;
+    TextView unsecureMoney, secureMoney, mortgage1, mortgage2, mortgage3;
+
+
 
     public ProductFragments() {
         // Required empty public constructor
@@ -46,30 +50,47 @@ public class ProductFragments extends Fragment implements View.OnClickListener{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         expandableLayoutMoney = view.findViewById(R.id.expandable_layout_money);
         expandableLayoutCar = view.findViewById(R.id.expandable_layout_car);
+        expandableLayoutMortgage = view.findViewById(R.id.expandable_layout_mortgage);
 
         linearLayoutMoney = (LinearLayout) view.findViewById(R.id.money_expand_button);
         linearLayoutCar = (LinearLayout) view.findViewById(R.id.car_expand_button);
+        linearLayoutMortgage = (LinearLayout) view.findViewById(R.id.mortgage_expand_button);
+        linearLayoutGoods = (LinearLayout) view.findViewById(R.id.goods_expand_button);
 
 
         unsecureMoney = (TextView) view.findViewById(R.id.unsecureMoney);
         secureMoney = (TextView) view.findViewById(R.id.secureMoney);
+        mortgage1 = (TextView) view.findViewById(R.id.mortgage1);
+        mortgage2 = (TextView) view.findViewById(R.id.mortgage2);
+        mortgage3 = (TextView) view.findViewById(R.id.mortgage3);
 
-        expandableLayoutMoney.setDuration(200);
-        expandableLayoutCar.setDuration(200);
+        expandableLayoutMoney.setDuration(100);
+        expandableLayoutCar.setDuration(100);
+        expandableLayoutMortgage.setDuration(100);
 
         expandableLayoutCar.setExpanded(false);
         expandableLayoutMoney.setExpanded(false);
+        expandableLayoutMortgage.setExpanded(false);
 
 
         linearLayoutMoney.setOnClickListener(this);
         linearLayoutCar.setOnClickListener(this);
+        linearLayoutMortgage.setOnClickListener(this);
+        linearLayoutGoods.setOnClickListener(this);
+
+
+        category = "category";
 
 
         // القروض النقدية بدون ضمانات عينية
         unsecureMoney.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Toast", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), QuizSessionActivity.class);
+                intent.putExtra(category,4001);
+                startActivity(intent);
+
             }
         });
 
@@ -77,11 +98,49 @@ public class ProductFragments extends Fragment implements View.OnClickListener{
         secureMoney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Toast", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), QuizSessionActivity.class);
+                intent.putExtra(category,4001);
+                startActivity(intent);            }
+        });
+
+
+        // قروض التمويل العقاري للافراد
+        mortgage1.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), QuizSessionActivity.class);
+                intent.putExtra(category,2525);
+                startActivity(intent);
+
+            }
+        });
+
+        // قروض التمويل العقاري التشطيب
+        mortgage2.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), QuizSessionActivity.class);
+                intent.putExtra(category,2527);
+                startActivity(intent);
+
             }
         });
 
 
+
+        // قروض التمويل العقاري التشطيب
+        mortgage3.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), QuizSessionActivity.class);
+                intent.putExtra(category,2526);
+                startActivity(intent);
+
+            }
+        });
     }
 
     @Override
@@ -97,6 +156,20 @@ public class ProductFragments extends Fragment implements View.OnClickListener{
         }
         else if (view.equals(linearLayoutCar)){
             Toast.makeText(getContext(), "Toast", Toast.LENGTH_SHORT).show();
+        }
+        else if (view.equals(linearLayoutMortgage)){
+            if (expandableLayoutMortgage.isExpanded()){
+                expandableLayoutMortgage.collapse();
+            }
+            else{
+                expandableLayoutMortgage.expand();
+            }
+        }
+        else if (view.equals(linearLayoutGoods)){
+            Intent intent = new Intent(getActivity(), QuizSessionActivity.class);
+            intent.putExtra(category,4004);
+            startActivity(intent);
+
         }
     }
 

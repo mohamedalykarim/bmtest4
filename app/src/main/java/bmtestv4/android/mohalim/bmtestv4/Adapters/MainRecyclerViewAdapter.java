@@ -60,7 +60,10 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
         if (link.get_resource() != 0) {
             Picasso.with(mCtx)
                     .load(link.get_resource())
+                    .resize(150, 150)
                     .into(holder.iconView);
+
+
         }
     }
 

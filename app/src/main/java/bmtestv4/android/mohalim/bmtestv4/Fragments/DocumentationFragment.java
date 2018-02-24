@@ -67,6 +67,14 @@ public class DocumentationFragment extends Fragment implements MainRecyclerViewA
         mRecyclerArraylist.add(new Link("التحاويل الداخلية","هذا القسم مخصص لتعليمات التحاويل الداخلية ", 0));
         mRecyclerArraylist.add(new Link("الاوراق التجارية","هذا القسم مخصص لتعليمات الاوراق التجارية ", 0));
         mRecyclerArraylist.add(new Link("الالتزام المصرفي","هذا القسم مخصص لتعليمات الالتزام المصرفي ", 0));
+        mRecyclerArraylist.add(new Link("شهادات الادخار","هذا القسم مخصص لتعليمات شهادات الادخار ", 0));
+        mRecyclerArraylist.add(new Link("خطابات الضمان","هذا القسم مخصص لتعليمات خطابات الضمان ", 0));
+        mRecyclerArraylist.add(new Link("خدمة كبار العملاء BM VIP","هذا القسم مخصص لتعليمات خدمة كبار العملاء BM VIP ", 0));
+        mRecyclerArraylist.add(new Link("البطاقات","هذا القسم مخصص لتعليمات البطاقات", 0));
+        mRecyclerArraylist.add(new Link("خزن الامانات","هذا القسم مخصص لتعليمات خزن الامانات", 0));
+        mRecyclerArraylist.add(new Link("الات البنك الشخصي ATM","هذا القسم مخصص لتعليمات الات البنك الشخصي ATM", 0));
+        mRecyclerArraylist.add(new Link("النواحى النظريه للاعتمادات المستنديه استيراد - تصدير","هذا القسم مخصص لتعليمات النواحى النظريه للاعتمادات المستنديه استيراد - تصدير", 0));
+        mRecyclerArraylist.add(new Link("الاعتمادات المستندية استيراد","هذا القسم مخصص لتعليمات الاعتمادات المستندية استيراد", 0));
 
         mAdapter.setLinkData(mRecyclerArraylist);
 
@@ -157,5 +165,62 @@ public class DocumentationFragment extends Fragment implements MainRecyclerViewA
             SME.putExtra(category,2016);
             startActivity(SME);
         }
+
+        // شهادات الادخار
+        else if (checkedItemIndex == 12){
+            Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
+            SME.putExtra(category,2017);
+            startActivity(SME);
+        }
+
+        // خطابات الضمان
+        else if (checkedItemIndex == 13){
+            Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
+            SME.putExtra(category,2018);
+            startActivity(SME);
+        }
+
+        // BM VIP
+        else if (checkedItemIndex == 14){
+            Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
+            SME.putExtra(category,2019);
+            startActivity(SME);
+        }
+
+        // البطاقات
+        else if (checkedItemIndex == 15){
+            Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
+            SME.putExtra(category,2021);
+            startActivity(SME);
+        }
+
+        // خزن الامانات
+        else if (checkedItemIndex == 16){
+            Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
+            SME.putExtra(category,2022);
+            startActivity(SME);
+        }
+
+        // الات البنك الشخصى ATM
+        else if (checkedItemIndex == 17){
+            Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
+            SME.putExtra(category,2023);
+            startActivity(SME);
+        }
+
+        // النواحى النظريه للاعتمادات المستنديه استيراد - تصدير
+        else if (checkedItemIndex == 18){
+            Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
+            SME.putExtra(category,2024);
+            startActivity(SME);
+        }
+
+        // الاعتمادات المستندية استيراد
+        else if (checkedItemIndex == 19){
+            Intent SME = new Intent(this.getActivity(), QuizSessionActivity.class);
+            SME.putExtra(category,2025);
+            startActivity(SME);
+        }
+
     }
 }

@@ -28,6 +28,12 @@ import bmtestv4.android.mohalim.bmtestv4.R;
  */
 
 public class QuestionPagerFragment extends Fragment {
+
+    private static final String MCURRENT_SESSION_KEY = "current_session";
+    private static final String MCURRENT_SESSION_ITEM_KEY = "current_session_item";
+    private static final String PAGE_NUMBER = "page_number";
+
+
     public static ArrayList<CurrentSession> mCurrentSession;
     CurrentSession currentSessionItem;
     int pageNumber;
@@ -57,18 +63,45 @@ public class QuestionPagerFragment extends Fragment {
         mCurrentSession = getArguments().getParcelableArrayList("current_session");
         pageNumber      = getArguments().getInt("position");
         rb = null;
+
+        if (savedInstanceState != null){
+            if (savedInstanceState.containsKey(MCURRENT_SESSION_KEY)){
+                mCurrentSession = savedInstanceState.getParcelableArrayList(MCURRENT_SESSION_KEY);
+            }
+
+            else if (savedInstanceState.containsKey(MCURRENT_SESSION_ITEM_KEY)){
+                currentSessionItem = savedInstanceState.getParcelable(MCURRENT_SESSION_ITEM_KEY);
+            }
+            else if (savedInstanceState.containsKey(PAGE_NUMBER)){
+                pageNumber = savedInstanceState.getInt(PAGE_NUMBER);
+            }
+        }
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.questions_pager_row, container, false);
+
         view.setRotation(180);
         questionNumber = view.findViewById(R.id.tv_question_number);
         questionText = view.findViewById(R.id.tv_question_text);
         mRadioGroubChoices = view.findViewById(R.id.rg_choices);
         database = new SessionSQLiteHelper(getContext());
 
+
+        if (savedInstanceState != null){
+            if (savedInstanceState.containsKey(MCURRENT_SESSION_KEY)){
+                mCurrentSession = savedInstanceState.getParcelableArrayList(MCURRENT_SESSION_KEY);
+            }
+
+            else if (savedInstanceState.containsKey(MCURRENT_SESSION_ITEM_KEY)){
+                currentSessionItem = savedInstanceState.getParcelable(MCURRENT_SESSION_ITEM_KEY);
+            }
+            else if (savedInstanceState.containsKey(PAGE_NUMBER)){
+                pageNumber = savedInstanceState.getInt(PAGE_NUMBER);
+            }
+        }
 
 
 
@@ -176,4 +209,13 @@ public class QuestionPagerFragment extends Fragment {
         return view;
     }
 
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putParcelableArrayList(MCURRENT_SESSION_KEY, mCurrentSession);
+        outState.putParcelable(MCURRENT_SESSION_ITEM_KEY, currentSessionItem);
+        outState.putInt(PAGE_NUMBER, pageNumber);
+    }
 }

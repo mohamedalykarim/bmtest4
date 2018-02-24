@@ -71,4 +71,5 @@ public class QuizFragments extends Fragment implements MainRecyclerViewAdapter.L
             startActivity(SME);
         }
     }
+
 }
